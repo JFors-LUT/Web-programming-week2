@@ -14,14 +14,11 @@ submitButton.addEventListener("click", function(){
     for (var i = 1; i<numberOfRows; i++){
         if(myTable.rows.item(i).cells.item(0).innerHTML == uname.value){
             var key = 1;
-            console.log(myTable.rows.item(i).cells.item(0).id);
-            break;
-        } else {
-            console.log("Number: "+myTable.rows.item(i).cells.item(0).id);
-            
+            break;        
         }
+    }
 
-    }if (key == 0){
+    if (key == 0){
         var newRow = myTable.insertRow();
         var newName = newRow.insertCell();
         var newEmail = newRow.insertCell();
@@ -37,8 +34,11 @@ submitButton.addEventListener("click", function(){
 
         newAddress.innerHTML = address.value;
         newAddress.id = 'str'+i;
-
-        newAdmin.innerHTML = admin.value
+        if(admin.checked){
+        newAdmin.innerHTML = 'X'
+        }else{
+            newAdmin.innerHTML = '-'
+        }
         newAdmin.id = 'ad'+i;
 
         //var nodeName = document.createTextNode(uname.value);
@@ -50,11 +50,15 @@ submitButton.addEventListener("click", function(){
         //newEmail.appendChild(nodeEmail);
         //newAddress.appendChild(nodeAddress);
         //newAdmin.appendChild(nodeAdmin);
-        
+
     } else {
         document.getElementById('mail'+i).innerHTML = email.value; 
         document.getElementById('str'+i).innerHTML = address.value;
-        document.getElementById('ad'+i).innerHTML = admin.value;
+        if(admin.checked){
+            document.getElementById('ad'+i).innerHTML = 'X'
+        }else{
+            document.getElementById('ad'+i).innerHTML = '-'
+        }
         
     }
 
